@@ -1,0 +1,81 @@
+﻿<Window x:Class="DioDemo.Windows.ClientWindows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DioDemo.Windows"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Clients" Height="450" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel 
+            LastChildFill="False"
+            Grid.Row="0">
+
+            <TextBlock VerticalAlignment="Center" Margin="5" x:Name="lblTotal">Total :</TextBlock>
+
+
+            <Button Content="Show all"
+                    DockPanel.Dock="Right"
+                    Margin="5"
+                    Padding="5"
+                    x:Name="btnShowAll"
+                    Click="btnShowAll_Click"/>
+        </DockPanel>
+        
+        <TextBlock x:Name="lblLoading"
+                   Grid.Row="1"
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Center" 
+                   FontSize="24">Loading...</TextBlock>
+        <ListView x:Name="listDIO"
+                  Grid.Row="1"
+                  Visibility="Hidden"
+                  Margin="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Border CornerRadius="8"
+                                    Background="#333"
+                                    Padding="15"
+                                    Margin="15">
+                                <TextBlock Foreground="#eee" 
+                                       FontSize="18"
+                                       Margin="5"
+                                       Text="{Binding Path=id,StringFormat=Id : {0}}"/>
+                            </Border>
+
+                            <!--<Border CornerRadius="8"
+                                    Background="#333"
+                                    Padding="15"
+                                    Margin="15">
+                                <TextBlock Foreground="#eee" 
+                                       FontSize="18"
+                                       Margin="5"
+                                       Text="{Binding Path=count,StringFormat=Count : {0}}"/>
+                            </Border>-->
+
+                            <Border CornerRadius="8"
+                                    Background="#333"
+                                    Padding="15"
+                                    Margin="15">
+                                <TextBlock Foreground="#eee" 
+                                       FontSize="18"
+                                       Margin="5"
+                                       Text="{Binding Path=type,StringFormat=Type : {0}}"/>
+                            </Border>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
