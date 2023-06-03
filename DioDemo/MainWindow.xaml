@@ -72,7 +72,7 @@
                                 <TextBlock Foreground="#eee" 
                                        FontSize="18"
                                        Margin="5"
-                                       Text="{Binding Path=title,StringFormat=Title : {0}}"/>
+                                       Text="{Binding Path=type,StringFormat=Type : {0}}"/>
                             </Border>
 
                         </StackPanel>

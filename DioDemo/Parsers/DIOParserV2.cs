@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 
 namespace DioDemo.Parsers;
 
-public static class DIOParser
+public static class DIOParserV2
 {
 
-    public static ConsortiumModel ConsortiumParse(string Content)
+    public static ConsortiumModelV2 ConsortiumParse(string Content)
     {
-        return JsonConvert.DeserializeObject<ConsortiumModel>(Content);
+        return JsonConvert.DeserializeObject<ConsortiumModelV2>(Content);
     }
 
     public static ProviderModel ProviderParse(string Content)

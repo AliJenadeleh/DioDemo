@@ -35,13 +35,15 @@ public partial class MainWindow : Window
         }
         else
         {
-            var content = await DownloadHelper.DownloadConsortiumAsync(txtDIO.Text);
+            var content = await DownloadHelperV2.DownloadConsortiumAsync(txtDIO.Text);
 
-            var consortium = DIOParser.ConsortiumParse(content);
+            var consortium = DIOParserV2.ConsortiumParse(content);
 
-            if (Validate(consortium))
+            if (consortium?.data?.Length > 0)
             {
-                listDIO.ItemsSource = consortium.meta.providers;
+                listDIO.ItemsSource = consortium.data;
+
+                this.Title = $"DIO Demo By AliJenadeleh.ir ({consortium.data.Length})";
             }
             else
             {
@@ -60,7 +62,7 @@ public partial class MainWindow : Window
     {
         if (listDIO.SelectedValue != null)
         {
-            var item = (ConsortiumProviderModel)listDIO.SelectedValue;
+            var item = (ConsortiumData)listDIO.SelectedValue;
             var wind = new ProviderWindow(item.id);
             wind.ShowDialog();
         }
